@@ -219,4 +219,6 @@
         <item>@string/jpg_compress_display</item>
         <item>@string/png_compress_display</item>
     </string-array>
+    <string name="sync_progress_pref_title">すべてのアーカイブの進行状況を同期</string>
+    <string name="sync_progress_pref_summary">有効にすると、ブックマークされたものだけでなく、すべてのアーカイブの読書進行状況がサーバーに同期されます</string>
 </resources>

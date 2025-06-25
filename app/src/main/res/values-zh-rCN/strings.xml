@@ -220,4 +220,6 @@
         <item>@string/jpg_compress_display</item>
         <item>@string/png_compress_display</item>
     </string-array>
+    <string name="sync_progress_pref_title">同步所有档案的进度</string>
+    <string name="sync_progress_pref_summary">启用后，所有档案的阅读进度都会同步到服务器，而不仅仅是收藏的档案</string>
 </resources>
