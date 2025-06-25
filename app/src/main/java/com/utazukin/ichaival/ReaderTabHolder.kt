@@ -18,6 +18,7 @@
 
 package com.utazukin.ichaival
 
+import androidx.preference.PreferenceManager
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -109,7 +110,11 @@ object ReaderTabHolder {
     }
 
     fun resetServerProgress(id: String) {
-        WebHandler.updateProgress(id, 0)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(App.context)
+        val preserveProgress = prefs.getBoolean(App.context.getString(R.string.preserve_progress_pref_key), false)
+        if (!preserveProgress) {
+            WebHandler.updateProgress(id, 0)
+        }
     }
 
     fun removeAll() {
@@ -118,8 +123,12 @@ object ReaderTabHolder {
     }
 
     fun resetServerProgress(tabs: List<ReaderTab>) {
-        for (tab in tabs)
-            WebHandler.updateProgress(tab.id, 0)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(App.context)
+        val preserveProgress = prefs.getBoolean(App.context.getString(R.string.preserve_progress_pref_key), false)
+        if (!preserveProgress) {
+            for (tab in tabs)
+                WebHandler.updateProgress(tab.id, 0)
+        }
     }
 
     private fun updateRemoveListeners(id: String) {

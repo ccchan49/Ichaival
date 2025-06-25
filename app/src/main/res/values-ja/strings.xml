@@ -221,4 +221,6 @@
     </string-array>
     <string name="sync_progress_pref_title">すべてのアーカイブの進行状況を同期</string>
     <string name="sync_progress_pref_summary">有効にすると、ブックマークされたものだけでなく、すべてのアーカイブの読書進行状況がサーバーに同期されます</string>
+    <string name="preserve_progress_pref_title">ブックマーク解除時の進行状況を保持</string>
+    <string name="preserve_progress_pref_summary">有効にすると、ブックマークを削除しても読書進行状況がリセットされません</string>
 </resources>

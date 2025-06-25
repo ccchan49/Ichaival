@@ -131,6 +131,14 @@
             app:iconSpaceReserved="false"
             app:key="@string/sync_progress_pref_key" />
         <SwitchPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            android:title="@string/preserve_progress_pref_title"
+            android:summary="@string/preserve_progress_pref_summary"
+            app:iconSpaceReserved="false"
+            app:key="@string/preserve_progress_pref_key" />
+        <SwitchPreference
             app:defaultValue="false"
             app:iconSpaceReserved="false"
             app:key="@string/rtol_pref_key"
