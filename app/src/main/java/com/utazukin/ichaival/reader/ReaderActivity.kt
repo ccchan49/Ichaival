@@ -275,7 +275,9 @@ class ReaderActivity : BaseActivity(), OnFragmentInteractionListener, TabRemoved
                     initializePager(appBar)
                 }
 
-                if (savedPage != it.currentPage && ReaderTabHolder.isTabbed(it.id))
+                val isTabbed = ReaderTabHolder.isTabbed(it.id)
+                val syncAllArchives = prefs.getBoolean(getString(R.string.sync_progress_pref_key), false)
+                if (savedPage != it.currentPage && (isTabbed || syncAllArchives))
                     WebHandler.updateProgress(it.id, currentPage)
 
                 //Use the page from the thumbnail over the bookmark
@@ -373,7 +375,11 @@ class ReaderActivity : BaseActivity(), OnFragmentInteractionListener, TabRemoved
         archive?.run {
             val current = this@ReaderActivity.currentPage
             launch(Dispatchers.IO) {
-                if (ReaderTabHolder.updatePageIfTabbed(id, current)) {
+                val isTabbed = ReaderTabHolder.updatePageIfTabbed(id, current)
+                val prefs = PreferenceManager.getDefaultSharedPreferences(this@ReaderActivity)
+                val syncAllArchives = prefs.getBoolean(getString(R.string.sync_progress_pref_key), false)
+                
+                if (isTabbed || syncAllArchives) {
                     updateProgressJob?.cancel()
                     clearNewFlag()
                     updateProgressJob = launch {
